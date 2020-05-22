@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemigo
+  - Limites
   layers:
   - Default
   - TransparentFX
@@ -13,8 +15,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Enemigos
+  - Jugador
   - 
   - 
   - 
@@ -44,6 +46,9 @@ TagManager:
   - name: paisaje
     uniqueID: 1551918643
     locked: 0
+  - name: detalles fondo
+    uniqueID: 598681289
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -52,4 +57,7 @@ TagManager:
     locked: 0
   - name: plantas
     uniqueID: 579114947
+    locked: 0
+  - name: Interficie
+    uniqueID: 47437781
     locked: 0

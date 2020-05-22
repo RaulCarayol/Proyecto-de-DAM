@@ -9,9 +9,10 @@ public class JugadorMovimiento : MonoBehaviour
     public Joystick joystick;
     public float velocidadCorrer = 40f;
     float movimientoHorizontal;
-    float ataque = 0f;
+
     bool saltar=false;
     bool agacharse = false;
+
    
 
 
@@ -45,6 +46,7 @@ public class JugadorMovimiento : MonoBehaviour
         {
             saltar = true;
             animator.SetBool("saltando", true);
+            animator.SetTrigger("salto");
         }
         else if (joystick.Vertical <= -.5f)
         {
@@ -83,18 +85,7 @@ public class JugadorMovimiento : MonoBehaviour
     {
        // animator.SetBool("agachado", estaAgachado);
     }
-    public void Atacar()
-    {
-        animator.SetTrigger("atacando");
-        animator.SetFloat("ataque",ataque);
-        ataque++;
-        if (ataque > 2)
-        {
-            ataque = 0f;
-        }
-        //Debug.Log("Atacado Lanzado");
-        
-    }
+
 
     private void FixedUpdate()
     {
