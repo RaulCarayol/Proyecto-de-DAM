@@ -169,14 +169,14 @@ MonoBehaviour:
   jugador: {fileID: 0}
   distanciaMoverse: 10
   distanciaAtacar: 3
-  "da\xF1oAtaque": 20
+  "da\xF1oAtaque": 18
   tiempoSiguienteAtaque: 2
-  velocidadAtaques: 0.4
+  velocidadAtaques: 0.6
   puntoAtaque: {fileID: 1353421671707802516}
   rb: {fileID: 1353421670623602693}
   velocidad: 5
   estaGirado: 1
-  rangoAtaque: 2
+  rangoAtaque: 3
   capaJugador:
     serializedVersion: 2
     m_Bits: 512

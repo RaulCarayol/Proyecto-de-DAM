@@ -17,7 +17,7 @@ public class enemigo : MonoBehaviour
     public Rigidbody2D rb;
     public float velocidad = 5f;
     public bool estaGirado = false;
-    int vidaActual;
+    public int vidaActual;
     public float rangoAtaque =2f;
     public LayerMask capaJugador;
     public bool esqueleto = false;

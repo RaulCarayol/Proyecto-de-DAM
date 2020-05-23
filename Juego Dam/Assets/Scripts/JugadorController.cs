@@ -6,36 +6,34 @@ using UnityEngine.Events;
 public class JugadorController : MonoBehaviour
 {
 
-    [SerializeField] private float m_FuerzaSalto = 600f;                          // Amount of force added when the player jumps.
-    [Range(0, 1)] [SerializeField] private float m_velocidadAgacharse = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
-    [Range(0, .3f)] [SerializeField] private float m_SuavidadMovimiento = .05f;  // How much to smooth out the movement
-    [SerializeField] private bool m_ControlEnAire = false;                         // Whether or not a player can steer while jumping;
-    [SerializeField] public LayerMask m_SueloParaElPersonaje;                          // A mask determining what is ground to the character
-    [SerializeField] public Transform m_SueloCheck;                           // A position marking where to check if the player is grounded.
-    [SerializeField] public Transform m_TechoCheck;                          // A position marking where to check for ceilings
-    [SerializeField] public Collider2D m_AgacharseDisableCollider;                // A collider that will be disabled when crouching
+     public float fuerzaSalto = 600f;                      
+     public float velocidadAgacharse = .36f;         
+     public float suavidadMovimiento = .05f; 
+     public bool controlEnAire = true;                   
+     public LayerMask sueloParaElPersonaje;                        
+     public Transform sueloCheck;                           
+     public Transform techoCheck;                          
+     public Collider2D agacharseDisableCollider;     
 
-    const float k_GroundedRadius = .4f; // Radius of the overlap circle to determine if grounded
-    private bool m_Grounded;            // Whether or not the player is grounded.
-    const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
-    private Rigidbody2D m_Rigidbody2D;
-    private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+    const float radioEnElSuelo = .4f; 
+    private bool estaEnElSuelo; 
+    const float radioTecho = .2f; 
+    public Rigidbody2D rb;
+    private bool estaMirandoBien = true;
     private Vector3 velocity = Vector3.zero;
 
-    [Header("Events")]
-    [Space]
-
+    //evento para avisar cuando llega al suelo despues de saltar
     public UnityEvent OnLandEvent;
 
-    [System.Serializable]
-    public class BoolEvent : UnityEvent<bool> { }
 
+    public class BoolEvent : UnityEvent<bool> { }
+    //evento para decir cuando esta agachado
     public BoolEvent OnCrouchEvent;
-    private bool m_estabaAgachado = false;
+    private bool estabaAgachado = false;
 
     private void Awake()
     {
-        m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
 
@@ -46,19 +44,20 @@ public class JugadorController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bool m_estabaEnSuelo = m_Grounded;
-        m_Grounded = false;
+        bool estabaEnSuelo = estaEnElSuelo;
+        estaEnElSuelo = false;
 
-        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-        // This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_SueloCheck.position, k_GroundedRadius, m_SueloParaElPersonaje);
+        //mirar si esta en el suelo cuando el suelo check en un radio estipulado (radioEnElSuelo) toca algo desigando como suelo para el jugador
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(sueloCheck.position, radioEnElSuelo, sueloParaElPersonaje);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)
             { 
-                m_Grounded = true;
-                if (!m_estabaEnSuelo)
+                estaEnElSuelo = true;
+                //si no estaba en el suelo
+                if (!estabaEnSuelo)
                 {
+                    //avisar que esta en el suelo (JugadorMovimiento)
                     OnLandEvent.Invoke();
                 }
             }
@@ -66,88 +65,86 @@ public class JugadorController : MonoBehaviour
     }
 
 
-    public void Mover(float move, bool crouch, bool jump)
+    public void Mover(float movimiento, bool agacharse, bool saltar)
     {
-        // If crouching, check to see if the character can stand up
-        if (!crouch)
+        // si esta agachado, mirar si se puede levantar
+        if (!agacharse)
         {
-            // If the character has a ceiling preventing them from standing up, keep them crouching
-            if (Physics2D.OverlapCircle(m_TechoCheck.position, k_CeilingRadius, m_SueloParaElPersonaje))
+            // si esta agachjado y tiene algo encima, manterlo agachado
+            if (Physics2D.OverlapCircle(techoCheck.position, radioTecho, sueloParaElPersonaje))
             {
-                crouch = true;
+                agacharse = true;
             }
         }
 
-        //only control the player if grounded or airControl is turned on
-        if (m_Grounded || m_ControlEnAire)
+        //solo si esta en el suelo o tiene control en el aire
+        if (estaEnElSuelo || controlEnAire)
         {
 
-            // If crouching
-            if (crouch)
+            // si esta agachado
+            if (agacharse)
             {
-                if (!m_estabaAgachado)
+                if (!estabaAgachado)
                 {
-                    m_estabaAgachado = true;
+                    estabaAgachado = true;
+                    //avisar que esta agachado
                     OnCrouchEvent.Invoke(true);
                 }
-                // Reduce the speed by the crouchSpeed multiplier
-                move *= m_velocidadAgacharse;
+                // reducir la velocidad cuando esta agachado 
+                movimiento *= velocidadAgacharse;
 
-                // Disable one of the colliders when crouching
-                if (m_AgacharseDisableCollider != null)
-                    m_AgacharseDisableCollider.enabled = false;
+                // desabilitar un collider mientras esta agachado
+                if (agacharseDisableCollider != null)
+                    agacharseDisableCollider.enabled = false;
             }
             else
             {
-                // Enable the collider when not crouching
-                if (m_AgacharseDisableCollider != null)
-                { m_AgacharseDisableCollider.enabled = true; }
+                // volver activar el collider cuando no esta agachado
+                if (agacharseDisableCollider != null)
+                { agacharseDisableCollider.enabled = true; }
 
-                if (m_estabaAgachado)
+                if (estabaAgachado)
                 {
-                    m_estabaAgachado = false;
+                    estabaAgachado = false;
                     OnCrouchEvent.Invoke(false);
                 }
 
             }
 
-            // Move the character by finding the target velocity
-            Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
-            // And then smoothing it out and applying it to the character
-            m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref velocity, m_SuavidadMovimiento);
+            Vector3 velocidadObjetivo = new Vector2(movimiento * 10f, rb.velocity.y);
+            // aplicar la velocidad al jugador con un factor de suavidad
+            rb.velocity = Vector3.SmoothDamp(rb.velocity, velocidadObjetivo, ref velocity, suavidadMovimiento);
 
-            // If the input is moving the player right and the player is facing left...
-            if (move > 0 && !m_FacingRight)
+            // si el jugador se mueve a la derecha y esta mirando a la izquierda
+            if (movimiento > 0 && !estaMirandoBien)
             {
-                // ... flip the player.
-                Flip();
+                Girar();
             }
-            // Otherwise if the input is moving the player left and the player is facing right...
-            else if (move < 0 && m_FacingRight)
+            // tambien hay que girar al jugador cuando se mueve a la izquierda y mira a la derecha
+            else if (movimiento < 0 && estaMirandoBien)
             {
                 // ... flip the player.
-                Flip();
+                Girar();
             }
         }
-        //Debug.Log(jump+""+m_Grounded);
+
         // If the player should jump...
-        if (m_Grounded &&   jump)
+        if (estaEnElSuelo &&   saltar)
         {
             // Add a vertical force to the player.
-            m_Grounded = false;
-            m_Rigidbody2D.AddForce(Vector3.up * m_FuerzaSalto);
+            estaEnElSuelo = false;
+            rb.AddForce(Vector3.up * fuerzaSalto);
             //Debug.Log("saltado");
             //jump = false;
         }
     }
 
 
-    private void Flip()
+    private void Girar()
     {
-        // Switch the way the player is labelled as facing.
-        m_FacingRight = !m_FacingRight;
-
-        // Multiply the player's x local scale by -1.
+        //cambiar el estado de mirando bien cuando se gira
+        estaMirandoBien = !estaMirandoBien;
+        //girando multiplicando por -1 la escala de x pàra que se gire horizontalmente
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;

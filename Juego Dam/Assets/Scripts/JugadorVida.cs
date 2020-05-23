@@ -12,6 +12,7 @@ public class JugadorVida : MonoBehaviour
     public int vidaActual;
     public Slider barraDeVida;
     public GameManager gameManager;
+    bool estaMuerto = false;
     //public PolygonCollider2D limites;
     
     // Start is called before the first frame update
@@ -29,16 +30,25 @@ public class JugadorVida : MonoBehaviour
 
     public void RecibirDaño(int daño)
     {
-        animator.SetTrigger("golpeado");
+        if (!estaMuerto)
+        {
+            animator.SetTrigger("golpeado");
+        }
         vidaActual -= daño;
         if(vidaActual <= 0)
         {
             //Morir();
+            estaMuerto = true;
             animator.SetBool("estaMuerto", true);
         }
     }
 
-     public void Morir()
+    public void RecibirVida(int vidaExtra)
+    {
+        vidaActual += vidaExtra;
+    }
+
+    public void Morir()
     {
         gameManager.GameOver();
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

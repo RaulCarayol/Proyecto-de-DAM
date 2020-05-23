@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CorazonControlador.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
@@ -71,10 +72,14 @@
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+    <Compile Include="Assets\MonedaControlador.cs" />
+    <Compile Include="Assets\PuertaTraslador.cs" />
     <Compile Include="Assets\Scripts\CargaInicio.cs" />
     <Compile Include="Assets\Scripts\ControladorCamara.cs" />
+    <Compile Include="Assets\Scripts\GuardarDatos.cs" />
     <Compile Include="Assets\Scripts\JugadorCombateControlador.cs" />
     <Compile Include="Assets\Scripts\JugadorController.cs" />
+    <Compile Include="Assets\Scripts\JugadorDatos.cs" />
     <Compile Include="Assets\Scripts\JugadorMovimiento.cs" />
     <Compile Include="Assets\Scripts\JugadorVida.cs" />
     <Compile Include="Assets\Scripts\LevelsMenu.cs" />
@@ -119,11 +124,15 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Sprites\Enemigos\gothicvania patreon collection\public-license.txt" />
     <None Include="Assets\Sprites\ui\UIpack\Spritesheet\blueSheet.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Sprites\Efectos\wills_pixel_explosions_sample\wills_pixel_explosions_sample\vertical_explosion\spritesheet\spritesheet.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
-    <None Include="Assets\Scripts\Gothicvania Cemetery Artwork\about.txt" />
+    <None Include="Assets\Sprites\Decorado\Gothicvania Cemetery Artwork\about.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\Sprites\Efectos\wills_pixel_explosions_sample\wills_pixel_explosions_sample\readme.txt" />
+    <None Include="Assets\Sprites\Efectos\wills_pixel_explosions_sample\wills_pixel_explosions_sample\round_vortex\spritesheet\spritesheet.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Pixel Font - Tripfive\_README.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
@@ -131,24 +140,29 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\Scripts\Medieval_pixel_art_asset_FREE\pixel_snapping_README.txt" />
+    <None Include="Assets\Sprites\Decorado\Medieval_pixel_art_asset_FREE\pixel_snapping_README.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Sprites\Efectos\wills_pixel_explosions_sample\wills_pixel_explosions_sample\X_plosion\spritesheet\spritesheet.txt" />
     <None Include="Assets\Sprites\ui\UIpack\Spritesheet\yellowSheet.xml" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Sprites\objetos\RPG Items\License.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Sprites\ui\UIpack\Spritesheet\redSheet.xml" />
+    <None Include="Assets\Sprites\Efectos\wills_pixel_explosions_sample\wills_pixel_explosions_sample\round_explosion\spritesheet\spritesheet.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\Sprites\ui\UIpack\Spritesheet\greenSheet.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Sprites\Decorado\cavesofgallet\about.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Sprites\Efectos\wills_pixel_explosions_sample\wills_pixel_explosions_sample\vertical_explosion_small\spritesheet\spritesheet.txt" />
     <None Include="Assets\Sprites\ui\UIpack\license.txt" />
     <None Include="Assets\Sprites\ui\UIpack\Spritesheet\greySheet.xml" />
+    <None Include="Assets\Sprites\Efectos\wills_pixel_explosions_sample\wills_pixel_explosions_sample\license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
-    <None Include="Assets\Scripts\Nature_pixel_art_assets\pixel_snapping_README.txt" />
+    <None Include="Assets\Sprites\Decorado\Nature_pixel_art_assets\pixel_snapping_README.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
