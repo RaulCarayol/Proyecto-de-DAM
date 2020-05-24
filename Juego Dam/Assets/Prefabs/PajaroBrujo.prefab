@@ -142,8 +142,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 200
+  m_UseAutoMass: 1
+  m_Mass: 3.5382679
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
@@ -166,16 +166,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaMaxima: 100
   animator: {fileID: 1353421670623602747}
-  jugador: {fileID: 0}
   distanciaMoverse: 10
   distanciaAtacar: 3
-  "da\xF1oAtaque": 18
+  "da\xF1oAtaque": 15
   tiempoSiguienteAtaque: 2
-  velocidadAtaques: 0.6
+  velocidadAtaques: 0.4
   puntoAtaque: {fileID: 1353421671707802516}
   rb: {fileID: 1353421670623602693}
   velocidad: 5
   estaGirado: 1
+  vidaActual: 0
   rangoAtaque: 3
   capaJugador:
     serializedVersion: 2

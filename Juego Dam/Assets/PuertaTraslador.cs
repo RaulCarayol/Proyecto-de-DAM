@@ -35,7 +35,7 @@ public class PuertaTraslador : MonoBehaviour
                 enemigo1 == null && enemigo2.vidaActual<=0 ||
                 enemigo1.vidaActual <= 0 && enemigo2.vidaActual <= 0)
             {
-                collision.GetComponent<JugadorController>().rb.MovePosition(nuevaPosicion);
+                collision.GetComponent<JugadorController>().transform.position = nuevaPosicion;
             }
         }
     }

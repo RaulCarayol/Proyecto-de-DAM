@@ -44,7 +44,19 @@ public class JugadorCombateControlador : MonoBehaviour
             foreach (Collider2D enemigo in enemigosTocados)
             {
                 //Debug.Log("Tocado");
-                enemigo.GetComponent<enemigo>().RecibirDaño(dañoAtaque);
+                if (enemigo.tag == "Minotauro")
+                {
+                    enemigo.GetComponent<MinotauroControlador>().RecibirDaño(dañoAtaque);
+                }
+                else if (enemigo.tag == "Calavera")
+                {
+                    enemigo.GetComponent<CalaveraControlador>().RecibirDaño(dañoAtaque);
+                }
+                else if (enemigo.tag == "Enemigo")
+                {
+                    enemigo.GetComponent<enemigo>().RecibirDaño(dañoAtaque);
+                }
+                
             }
         }
 

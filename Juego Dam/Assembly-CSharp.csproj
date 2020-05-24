@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BolaFuegoControlador.cs" />
+    <Compile Include="Assets\CalaveraControlador.cs" />
     <Compile Include="Assets\CorazonControlador.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
@@ -72,7 +74,10 @@
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+    <Compile Include="Assets\MinotauroControlador.cs" />
     <Compile Include="Assets\MonedaControlador.cs" />
+    <Compile Include="Assets\OpcionesMenu.cs" />
+    <Compile Include="Assets\PortalControlador.cs" />
     <Compile Include="Assets\PuertaTraslador.cs" />
     <Compile Include="Assets\Scripts\CargaInicio.cs" />
     <Compile Include="Assets\Scripts\ControladorCamara.cs" />
@@ -85,8 +90,11 @@
     <Compile Include="Assets\Scripts\LevelsMenu.cs" />
     <Compile Include="Assets\Scripts\LimitesNivel.cs" />
     <Compile Include="Assets\Scripts\MenuPrincipal.cs" />
+    <Compile Include="Assets\Scripts\MostrarTexto.cs" />
+    <Compile Include="Assets\Scripts\OpcionesDatos.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PuertaSiguienteNivel.cs" />
+    <Compile Include="Assets\Scripts\TextoCartel.cs" />
     <Compile Include="Assets\Scripts\enemigo.cs" />
     <Compile Include="Assets\Scripts\fondoController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
@@ -122,6 +130,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+    <None Include="Assets\Sprites\objetos\spritesUnity\gothicvania patreon collection\gothicvania patreon collection\public-license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Sprites\Enemigos\gothicvania patreon collection\public-license.txt" />
@@ -134,6 +143,7 @@
     <None Include="Assets\Sprites\Efectos\wills_pixel_explosions_sample\wills_pixel_explosions_sample\readme.txt" />
     <None Include="Assets\Sprites\Efectos\wills_pixel_explosions_sample\wills_pixel_explosions_sample\round_vortex\spritesheet\spritesheet.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Sprites\objetos\spritesUnity\Traps\LICENSE.txt" />
     <None Include="Assets\Pixel Font - Tripfive\_README.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
@@ -341,13 +351,13 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.13f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.13f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -710,79 +720,79 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.13f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Monetization">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-weaver.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-      <HintPath>F:/avata/Documents/RepositorioLocal/Proyecto-de-DAM/Juego Dam/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+      <HintPath>E:/Clase/CICLOS/ProyectoDAM/Juego Dam/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

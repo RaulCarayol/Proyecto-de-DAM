@@ -7,7 +7,7 @@ public class enemigo : MonoBehaviour
 {
     public int vidaMaxima = 100;
     public Animator animator;
-    public Transform jugador;
+     Transform jugador;
     public float distanciaMoverse = 20f;
     public float distanciaAtacar = 15f;
     public int dañoAtaque = 40;
@@ -26,6 +26,7 @@ public class enemigo : MonoBehaviour
     void Start()
     {
         vidaActual = vidaMaxima;
+        jugador = GameObject.FindWithTag("Player").transform;
     }
 
     public void RecibirDaño(int dañoRecibido)
@@ -55,7 +56,8 @@ public class enemigo : MonoBehaviour
         //animacion muerte
         //Debug.Log("Esqueleto muerto");
         //desabilitar
-        Debug.Log("ha muerto: ");
+        rb.inertia = 0;
+        rb.velocity = Vector2.zero;
         animator.enabled = false;
         this.enabled=false;
     }
@@ -107,7 +109,8 @@ public class enemigo : MonoBehaviour
         if (jugadorTocado != null)
         {
             //quitarle vida
-            jugadorTocado.GetComponent<JugadorVida>().RecibirDaño(dañoAtaque);
+            //jugadorTocado.GetComponent<JugadorVida>().RecibirDaño(dañoAtaque);
+            jugador.GetComponent<JugadorVida>().RecibirDaño(dañoAtaque);
         }
     }
     public void MirarAlJugador()

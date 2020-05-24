@@ -12,16 +12,17 @@ public class JugadorVida : MonoBehaviour
     public int vidaActual;
     public Slider barraDeVida;
     public GameManager gameManager;
-    bool estaMuerto = false;
+    bool estaMuerto;
     //public PolygonCollider2D limites;
     
     // Start is called before the first frame update
     void Start()
     {
+        estaMuerto = false;
         vidaActual = vidaMaxima;
         animator.SetBool("estaMuerto", false);
+        barraDeVida.maxValue = vidaMaxima;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -30,27 +31,25 @@ public class JugadorVida : MonoBehaviour
 
     public void RecibirDaño(int daño)
     {
+        vidaActual -= daño;
+        if (vidaActual <= 0)
+        {
+            animator.SetBool("estaMuerto", true);
+        }
         if (!estaMuerto)
         {
             animator.SetTrigger("golpeado");
         }
-        vidaActual -= daño;
-        if(vidaActual <= 0)
-        {
-            //Morir();
-            estaMuerto = true;
-            animator.SetBool("estaMuerto", true);
-        }
+
     }
 
-    public void RecibirVida(int vidaExtra)
+    public void RecibirVida(int vida)
     {
-        vidaActual += vidaExtra;
+        vidaActual += vida;
     }
 
-    public void Morir()
+     public void Morir()
     {
         gameManager.GameOver();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

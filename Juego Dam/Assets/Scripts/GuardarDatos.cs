@@ -46,4 +46,36 @@ public class GuardarDatos {
             return null;
         }
     }
+
+    public static void GuardarOpciones(OpcionesMenu opcionesMenu)
+    {
+
+        BinaryFormatter formateador = new BinaryFormatter();
+        string localizacion = Application.persistentDataPath + "/configuracion.dam";
+        FileStream stream = new FileStream(localizacion, FileMode.Create);
+        OpcionesDatos datos = new OpcionesDatos(opcionesMenu);
+        formateador.Serialize(stream, datos);
+
+        stream.Close();
+    }
+
+    public static OpcionesDatos CargarDatosOpciones()
+    {
+        string localizacion = Application.persistentDataPath + "/configuracion.dam";
+        //comprovar si existe el archivo
+        if (File.Exists(localizacion))
+        {
+            BinaryFormatter formateador = new BinaryFormatter();
+            FileStream stream = new FileStream(localizacion, FileMode.Open);
+            OpcionesDatos datos = formateador.Deserialize(stream) as OpcionesDatos;
+            stream.Close();
+
+            return datos;
+        }
+        else
+        {
+            Debug.LogWarning("No se ha encontrado el archivo de datos del jugador");
+            return null;
+        }
+    }
 }

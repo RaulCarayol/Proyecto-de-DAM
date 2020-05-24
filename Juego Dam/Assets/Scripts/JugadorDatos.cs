@@ -11,9 +11,10 @@ public class JugadorDatos
     public float[] ultimoCheckPoint;
     public string ultimoNivel;
 
+
     public JugadorDatos(JugadorVida jugador, GameManager gameManager,string nivel)
     {
-        monedas = gameManager.monedas;
+        monedas = gameManager.puntuacion;
         vida = jugador.vidaActual;
         vidaMaxima = jugador.vidaMaxima;
         ultimoNivel = nivel;

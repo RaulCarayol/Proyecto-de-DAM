@@ -6,30 +6,30 @@ using UnityEngine.Events;
 public class JugadorController : MonoBehaviour
 {
 
-     public float fuerzaSalto = 600f;                      
-     public float velocidadAgacharse = .36f;         
-     public float suavidadMovimiento = .05f; 
-     public bool controlEnAire = true;                   
-     public LayerMask sueloParaElPersonaje;                        
+     public float FuerzaSalto = 500f;                         
+    public float velocidadAgacharse = .36f;         
+    public float suavidadMovimiento = .05f; 
+     public bool controlEnAire = true;                        
+    public LayerMask sueloParaElPersonaje;                        
      public Transform sueloCheck;                           
-     public Transform techoCheck;                          
-     public Collider2D agacharseDisableCollider;     
+    public Transform techoCheck;                          
+     public Collider2D agacharseDisableCollider;              
 
-    const float radioEnElSuelo = .4f; 
-    private bool estaEnElSuelo; 
-    const float radioTecho = .2f; 
-    public Rigidbody2D rb;
-    private bool estaMirandoBien = true;
-    private Vector3 velocity = Vector3.zero;
+    const float radioSuelo = .4f;
+    private bool estabaSuelo;            
+    const float techoRadio = .2f; 
+    private Rigidbody2D rb;
+    private bool mirandoBien = true; 
+    private Vector3 velocidad = Vector3.zero;
 
-    //evento para avisar cuando llega al suelo despues de saltar
+
     public UnityEvent OnLandEvent;
 
-
+    [System.Serializable]
     public class BoolEvent : UnityEvent<bool> { }
-    //evento para decir cuando esta agachado
+
     public BoolEvent OnCrouchEvent;
-    private bool estabaAgachado = false;
+    private bool m_estabaAgachado = false;
 
     private void Awake()
     {
@@ -44,20 +44,18 @@ public class JugadorController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bool estabaEnSuelo = estaEnElSuelo;
-        estaEnElSuelo = false;
+        bool m_estabaEnSuelo = estabaSuelo;
+        estabaSuelo = false;
 
-        //mirar si esta en el suelo cuando el suelo check en un radio estipulado (radioEnElSuelo) toca algo desigando como suelo para el jugador
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(sueloCheck.position, radioEnElSuelo, sueloParaElPersonaje);
+        //Mirar las colisiones con el suelo
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(sueloCheck.position, radioSuelo, sueloParaElPersonaje);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)
             { 
-                estaEnElSuelo = true;
-                //si no estaba en el suelo
-                if (!estabaEnSuelo)
+                estabaSuelo = true;
+                if (!m_estabaEnSuelo)
                 {
-                    //avisar que esta en el suelo (JugadorMovimiento)
                     OnLandEvent.Invoke();
                 }
             }
@@ -65,86 +63,79 @@ public class JugadorController : MonoBehaviour
     }
 
 
-    public void Mover(float movimiento, bool agacharse, bool saltar)
+    public void Mover(float movimiento, bool agachado, bool salto)
     {
-        // si esta agachado, mirar si se puede levantar
-        if (!agacharse)
+        if (!agachado)
         {
-            // si esta agachjado y tiene algo encima, manterlo agachado
-            if (Physics2D.OverlapCircle(techoCheck.position, radioTecho, sueloParaElPersonaje))
+            // mirar si hay techo para que siga agachado
+            if (Physics2D.OverlapCircle(techoCheck.position, techoRadio, sueloParaElPersonaje))
             {
-                agacharse = true;
+                agachado = true;
             }
         }
 
-        //solo si esta en el suelo o tiene control en el aire
-        if (estaEnElSuelo || controlEnAire)
+        if (estabaSuelo || controlEnAire)
         {
 
             // si esta agachado
-            if (agacharse)
+            if (agachado)
             {
-                if (!estabaAgachado)
+                if (!m_estabaAgachado)
                 {
-                    estabaAgachado = true;
-                    //avisar que esta agachado
+                    m_estabaAgachado = true;
                     OnCrouchEvent.Invoke(true);
                 }
-                // reducir la velocidad cuando esta agachado 
+                // velocidad reducida cuando esta agachado
                 movimiento *= velocidadAgacharse;
 
-                // desabilitar un collider mientras esta agachado
+                // quitar un collider cuando esta agachado para poder pasar por sitios
                 if (agacharseDisableCollider != null)
                     agacharseDisableCollider.enabled = false;
             }
             else
             {
-                // volver activar el collider cuando no esta agachado
+                // Enable the collider when not crouching
                 if (agacharseDisableCollider != null)
                 { agacharseDisableCollider.enabled = true; }
 
-                if (estabaAgachado)
+                if (m_estabaAgachado)
                 {
-                    estabaAgachado = false;
+                    m_estabaAgachado = false;
                     OnCrouchEvent.Invoke(false);
                 }
 
             }
 
             Vector3 velocidadObjetivo = new Vector2(movimiento * 10f, rb.velocity.y);
-            // aplicar la velocidad al jugador con un factor de suavidad
-            rb.velocity = Vector3.SmoothDamp(rb.velocity, velocidadObjetivo, ref velocity, suavidadMovimiento);
+            // suavidad
+            rb.velocity = Vector3.SmoothDamp(rb.velocity, velocidadObjetivo, ref velocidad, suavidadMovimiento);
 
-            // si el jugador se mueve a la derecha y esta mirando a la izquierda
-            if (movimiento > 0 && !estaMirandoBien)
+            //si se quiere mover derecha y esta mirando  izquierda
+            if (movimiento > 0 && !mirandoBien)
             {
                 Girar();
             }
-            // tambien hay que girar al jugador cuando se mueve a la izquierda y mira a la derecha
-            else if (movimiento < 0 && estaMirandoBien)
+            // si se quiere mover izquierda y esta mirando  derecha
+            else if (movimiento < 0 && mirandoBien)
             {
-                // ... flip the player.
                 Girar();
             }
         }
-
-        // If the player should jump...
-        if (estaEnElSuelo &&   saltar)
+        
+        if (estabaSuelo &&   salto)
         {
-            // Add a vertical force to the player.
-            estaEnElSuelo = false;
-            rb.AddForce(Vector3.up * fuerzaSalto);
-            //Debug.Log("saltado");
-            //jump = false;
+            //añadiendo fuerza vertical
+            estabaSuelo = false;
+            rb.AddForce(Vector3.up * FuerzaSalto);
         }
     }
 
 
     private void Girar()
     {
-        //cambiar el estado de mirando bien cuando se gira
-        estaMirandoBien = !estaMirandoBien;
-        //girando multiplicando por -1 la escala de x pàra que se gire horizontalmente
+
+        mirandoBien = !mirandoBien;
+
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;

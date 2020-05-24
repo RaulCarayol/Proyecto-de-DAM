@@ -7,10 +7,10 @@ public class fondoController : MonoBehaviour
     //public Transform personaje;
     //private Renderer renderer;
     //public float ScrollingSpeed=.1f;
-    // Start is called before the first frame update
+     //Start is called before the first frame update
     void Start()
     {
-       // renderer = this.GetComponent<Renderer>();
+        //renderer = this.GetComponent<Renderer>();
     }
 
     // Update is called once per frame

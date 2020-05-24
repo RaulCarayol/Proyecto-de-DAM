@@ -11,7 +11,7 @@ public class ControladorCamara : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        posicion = transform.position - personaje.transform.position;
+        //posicion = transform.position - personaje.transform.position;
 
     }
 
@@ -19,6 +19,6 @@ public class ControladorCamara : MonoBehaviour
     void Update()
     {
 
-        transform.position = personaje.transform.position+posicion;
+       // transform.position = personaje.transform.position+posicion;
     }
 }
