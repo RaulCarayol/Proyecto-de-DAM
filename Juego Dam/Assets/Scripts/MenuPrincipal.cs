@@ -21,7 +21,10 @@ public class MenuPrincipal : MonoBehaviour
     {
         levelsMenu.SetActive(true);
     }
-
+    public void JugarSupervivencia()
+    {
+        SceneManager.LoadScene("ModoInfinito");
+    }
     public void Jugar()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

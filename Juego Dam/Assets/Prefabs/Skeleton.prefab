@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9216211259207875373}
   - component: {fileID: 9216211259207875370}
   - component: {fileID: 9216211259207875372}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Skeleton
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
@@ -146,11 +146,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaMaxima: 70
   animator: {fileID: 9216211259207875375}
-  distanciaMoverse: 6
+  distanciaMoverse: 25
   distanciaAtacar: 2
   "da\xF1oAtaque": 12
   tiempoSiguienteAtaque: 3
-  velocidadAtaques: 1.7
+  velocidadAtaques: 0.9
   puntoAtaque: {fileID: 9216211259492836536}
   rb: {fileID: 9216211259207875372}
   velocidad: 5
@@ -161,6 +161,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   esqueleto: 1
+  moneda: {fileID: 2803025248461113542, guid: 0aa7d221cb9c34f4198206a7f519e276, type: 3}
 --- !u!50 &9216211259207875372
 Rigidbody2D:
   serializedVersion: 4
@@ -172,8 +173,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 1.5926021
+  m_UseAutoMass: 0
+  m_Mass: 200
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
@@ -191,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9216211259492836536}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ataqueCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

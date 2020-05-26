@@ -25,7 +25,7 @@ public class JugadorCombateControlador : MonoBehaviour
 
     public void Atacar()
     {
-        if (Time.time >= tiempoSiguienteAtaque)
+        if (Time.time >= tiempoSiguienteAtaque && JugadorVida.GetVidaActual() > 0)
         {
             tiempoSiguienteAtaque = Time.time + 1f / velocidadAtaques;
             //poner la animacion de atacar

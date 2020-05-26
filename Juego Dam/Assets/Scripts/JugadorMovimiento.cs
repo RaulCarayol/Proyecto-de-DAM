@@ -27,11 +27,11 @@ public class JugadorMovimiento : MonoBehaviour
     void Update()
     {
         //movimiento horizontal
-        if(joystick.Horizontal >= .2f)
+        if(joystick.Horizontal >= .2f && JugadorVida.GetVidaActual() > 0)
         {
             movimientoHorizontal = velocidadCorrer;
         }
-        else if(joystick.Horizontal <= -.2f)
+        else if(joystick.Horizontal <= -.2f && JugadorVida.GetVidaActual() > 0)
         {
             movimientoHorizontal = -velocidadCorrer;
         }
@@ -42,13 +42,13 @@ public class JugadorMovimiento : MonoBehaviour
         animator.SetFloat("velocidad", Mathf.Abs(movimientoHorizontal));
 
         //salto joystick
-        if (joystick.Vertical >= .62f)
+        if (joystick.Vertical >= .62f && JugadorVida.GetVidaActual() > 0)
         {
             saltar = true;
             animator.SetBool("saltando", true);
             animator.SetTrigger("salto");
         }
-        else if (joystick.Vertical <= -.5f)
+        else if (joystick.Vertical <= -.5f && JugadorVida.GetVidaActual() > 0)
         {
             agacharse = true;
             animator.SetBool("saltando", false);

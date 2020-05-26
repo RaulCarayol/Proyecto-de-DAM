@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2621342685044370924}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2621342685954735600}
   - component: {fileID: 2621342685954735603}
   - component: {fileID: 2621342685954735602}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: slime
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
@@ -146,8 +146,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 1.2053063
+  m_UseAutoMass: 0
+  m_Mass: 200
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
@@ -196,8 +196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaMaxima: 40
   animator: {fileID: 2621342685954735601}
-  distanciaMoverse: 20
-  distanciaAtacar: 10
+  distanciaMoverse: 30
+  distanciaAtacar: 4
   "da\xF1oAtaque": 5
   tiempoSiguienteAtaque: 2
   velocidadAtaques: 0.4
@@ -211,3 +211,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   esqueleto: 0
+  moneda: {fileID: 2803025248461113542, guid: 0aa7d221cb9c34f4198206a7f519e276, type: 3}

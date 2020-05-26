@@ -210,8 +210,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 1
-  m_Mass: 1.5253658
+  m_UseAutoMass: 0
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -232,13 +232,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69356995e82e5ec41abb30084eccb9f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FuerzaSalto: 500
+  FuerzaSalto: 675
   velocidadAgacharse: 0.36
   suavidadMovimiento: 0.05
   controlEnAire: 1
   sueloParaElPersonaje:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   sueloCheck: {fileID: 7148461228400372949}
   techoCheck: {fileID: 7148461227133417818}
   agacharseDisableCollider: {fileID: 7148461227657700673}
@@ -272,7 +272,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010249138, y: 0.14029372}
+  m_Offset: {x: 0.00071907043, y: 0.22130215}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -283,7 +283,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.70479774, y: 0.7211869}
+  m_Size: {x: 0.6857376, y: 0.88320374}
   m_EdgeRadius: 0
 --- !u!58 &7148461227657700686
 CircleCollider2D:
@@ -298,9 +298,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004927635, y: -0.63306606}
+  m_Offset: {x: -0.004927635, y: -0.64259654}
   serializedVersion: 2
-  m_Radius: 0.56898594
+  m_Radius: 0.5785164
 --- !u!95 &7148461227657700687
 Animator:
   serializedVersion: 3
@@ -339,7 +339,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   "da\xF1oAtaque": 37
-  velocidadAtaques: 1.2
+  velocidadAtaques: 1.25
   tiempoSiguienteAtaque: 0
 --- !u!114 &7148461227657700678
 MonoBehaviour:

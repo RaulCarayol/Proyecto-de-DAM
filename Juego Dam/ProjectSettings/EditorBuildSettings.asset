@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nivel_1.unity
     guid: 36111e40300be4043ae80331f8b2d399
+  - enabled: 1
+    path: Assets/Scenes/ModoInfinito.unity
+    guid: b510164a0ffe61040a3221fe0707ac58
   m_configObjects: {}

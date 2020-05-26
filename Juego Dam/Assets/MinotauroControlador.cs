@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MinotauroControlador : MonoBehaviour
 {
-    public int vidaMaxima = 500;
+    public int vidaMaxima = 400;
     public Animator animator;
      
     public float distanciaAtacar = 6f;
@@ -13,7 +13,7 @@ public class MinotauroControlador : MonoBehaviour
      
     public float rapidezBarrido = 1f;
     public float velocidadAtaques = 1f;
-    public float veolicidadBarrido = 100f;
+    public float veolicidadBarrido = 10f;
     public Transform puntoAtaque;
     public Rigidbody2D rb;
     public float velocidad = 5f;
@@ -33,7 +33,10 @@ public class MinotauroControlador : MonoBehaviour
     {
         vidaActual = vidaMaxima;
         jugador = GameObject.FindWithTag("Player").transform;
-        slider.GetComponent<Slider>().maxValue = vidaMaxima;
+        if (slider != null)
+        {
+            slider.GetComponent<Slider>().maxValue = vidaMaxima;
+        }
     }
 
     public void RecibirDaño(int dañoRecibido)
@@ -46,7 +49,10 @@ public class MinotauroControlador : MonoBehaviour
         {
             vidaActual = vidaActual - dañoRecibido;
         }
-        slider.GetComponent<Slider>().value = vidaActual;
+        if (slider != null)
+        {
+            slider.GetComponent<Slider>().value = vidaActual;
+        }
         //iniciar animacion dañado
         animator.SetTrigger("golpeado");
 
@@ -76,16 +82,20 @@ public class MinotauroControlador : MonoBehaviour
         Debug.Log("ha muerto: ");
         animator.enabled = false;
         this.enabled = false;
+        Destroy(gameObject);
     }
 
     private void Update()
     {
+        Debug.Log(Vector2.Distance(jugador.position, transform.position));
         if (Vector2.Distance(jugador.position, transform.position) < 38)
         {
-            if (!sliderActivado)
+            if (!sliderActivado && slider !=null)
             {
+                GameObject.FindWithTag("MainCamera").GetComponent<Camera>().orthographicSize = 11;
                 slider.SetActive(true);
                 sliderActivado = true;
+                slider.GetComponent<Slider>().value = vidaActual;
             }
             if (vidaActual > 0)
             {
@@ -94,6 +104,7 @@ public class MinotauroControlador : MonoBehaviour
                 if (Vector2.Distance(jugador.position, transform.position) < distanciaAtacar)
                 {
                     animator.SetBool("barrido", false);
+                    rb.inertia = 0;
                     Atacar();
                 }
                 else
@@ -117,7 +128,7 @@ public class MinotauroControlador : MonoBehaviour
         }
         else
         {
-            if (sliderActivado)
+            if (sliderActivado && slider != null)
             {
                 slider.SetActive(false);
                 sliderActivado = false;
@@ -179,16 +190,22 @@ public class MinotauroControlador : MonoBehaviour
     void Barrido2()
     {
 
-
-                if (jugador.position.x - rb.position.x < 0)
+        Vector2 objetivo = new Vector2(jugador.position.x, rb.position.y);
+        Vector2 nuevaPosicion = Vector2.MoveTowards(rb.position, objetivo, velocidad * Time.fixedDeltaTime);
+        rb.MovePosition(nuevaPosicion);
+        if (jugador.position.x - rb.position.x < 0)
                 {
-                    rb.AddRelativeForce(Vector2.left * veolicidadBarrido);
+
+                    rb.AddForce(Vector2.left * veolicidadBarrido);
+                    //rb.AddRelativeForce(Vector2.left * veolicidadBarrido);
                 }
                 else
                 {
-                    rb.AddRelativeForce(Vector2.right * veolicidadBarrido);
+                    rb.AddForce(Vector2.right * veolicidadBarrido);
+                     //rb.AddRelativeForce(Vector2.right * veolicidadBarrido);
+                     //
                 }
-                 animator.SetBool("barrido", true);
+                animator.SetBool("barrido", true);
 
     }
     public void Atacar()

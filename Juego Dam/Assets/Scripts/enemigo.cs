@@ -21,6 +21,7 @@ public class enemigo : MonoBehaviour
     public float rangoAtaque =2f;
     public LayerMask capaJugador;
     public bool esqueleto = false;
+    public GameObject moneda;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,8 @@ public class enemigo : MonoBehaviour
 
         if(vidaActual <= 0)
         {    
-            Debug.Log("VidaActual: " + vidaActual);
+            
+            //Debug.Log("VidaActual: " + vidaActual);
             //Vector2 nuevaPosicion = Vector2.MoveTowards(rb.position, new Vector2(rb.position.x, rb.position.y - 0.79f), velocidad * Time.fixedDeltaTime);
             rb.gravityScale = 0;
             rb.inertia = 0;
@@ -45,6 +47,9 @@ public class enemigo : MonoBehaviour
             {
                 rb.position = new Vector2(rb.position.x, rb.position.y - 0.79f);
             }
+            rb.inertia = 0;
+            rb.velocity = Vector2.zero;
+            rb.gravityScale = 0;
             GetComponent<Collider2D>().enabled = false;
             animator.SetBool("estaMuerto", true);
             //rb.Sleep();
@@ -56,10 +61,10 @@ public class enemigo : MonoBehaviour
         //animacion muerte
         //Debug.Log("Esqueleto muerto");
         //desabilitar
-        rb.inertia = 0;
-        rb.velocity = Vector2.zero;
+        Instantiate(moneda, transform.position, Quaternion.identity);
         animator.enabled = false;
         this.enabled=false;
+        Destroy(gameObject);
     }
 
     private void Update()
@@ -109,8 +114,11 @@ public class enemigo : MonoBehaviour
         if (jugadorTocado != null)
         {
             //quitarle vida
-            //jugadorTocado.GetComponent<JugadorVida>().RecibirDaño(dañoAtaque);
-            jugador.GetComponent<JugadorVida>().RecibirDaño(dañoAtaque);
+
+                jugadorTocado.GetComponent<JugadorVida>().RecibirDaño(dañoAtaque);
+
+
+            
         }
     }
     public void MirarAlJugador()

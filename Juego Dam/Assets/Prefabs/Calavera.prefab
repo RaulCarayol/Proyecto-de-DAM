@@ -152,16 +152,16 @@ MonoBehaviour:
     type: 3}
   gema: {fileID: 5234427309339834403, guid: 6c41d137d37836343bb6591b94ab1b6e, type: 3}
   tiempoSiguienteAtaque: 2
-  velocidadAtaque: 0.3
+  velocidadAtaque: 0.32
   animator: {fileID: 2082038339875931780}
   rb: {fileID: 3538879841834111046}
-  vidaMaxima: 80
+  vidaMaxima: 75
   rangoPared: 2
   pared:
     serializedVersion: 2
     m_Bits: 2304
   veleocidadInicio: 2
-  maxContadorDelayCambioDireccion: 24
+  maxContadorDelayCambioDireccion: 26
 --- !u!50 &3538879841834111046
 Rigidbody2D:
   serializedVersion: 4
