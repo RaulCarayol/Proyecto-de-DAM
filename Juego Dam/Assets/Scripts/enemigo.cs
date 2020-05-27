@@ -38,9 +38,6 @@ public class enemigo : MonoBehaviour
 
         if(vidaActual <= 0)
         {    
-            
-            //Debug.Log("VidaActual: " + vidaActual);
-            //Vector2 nuevaPosicion = Vector2.MoveTowards(rb.position, new Vector2(rb.position.x, rb.position.y - 0.79f), velocidad * Time.fixedDeltaTime);
             rb.gravityScale = 0;
             rb.inertia = 0;
             if (esqueleto)
@@ -52,7 +49,6 @@ public class enemigo : MonoBehaviour
             rb.gravityScale = 0;
             GetComponent<Collider2D>().enabled = false;
             animator.SetBool("estaMuerto", true);
-            //rb.Sleep();
         }
     }
 

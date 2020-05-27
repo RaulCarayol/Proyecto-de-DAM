@@ -63,10 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BolaFuegoControlador.cs" />
-    <Compile Include="Assets\CalaveraControlador.cs" />
-    <Compile Include="Assets\CorazonControlador.cs" />
-    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
@@ -74,14 +70,12 @@
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
-    <Compile Include="Assets\MinotauroControlador.cs" />
-    <Compile Include="Assets\ModoInfinito.cs" />
-    <Compile Include="Assets\MonedaControlador.cs" />
-    <Compile Include="Assets\OpcionesMenu.cs" />
-    <Compile Include="Assets\PortalControlador.cs" />
-    <Compile Include="Assets\PuertaTraslador.cs" />
+    <Compile Include="Assets\Scripts\BolaFuegoControlador.cs" />
+    <Compile Include="Assets\Scripts\CalaveraControlador.cs" />
     <Compile Include="Assets\Scripts\CargaInicio.cs" />
     <Compile Include="Assets\Scripts\ControladorCamara.cs" />
+    <Compile Include="Assets\Scripts\CorazonControlador.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GuardarDatos.cs" />
     <Compile Include="Assets\Scripts\JugadorCombateControlador.cs" />
     <Compile Include="Assets\Scripts\JugadorController.cs" />
@@ -91,10 +85,16 @@
     <Compile Include="Assets\Scripts\LevelsMenu.cs" />
     <Compile Include="Assets\Scripts\LimitesNivel.cs" />
     <Compile Include="Assets\Scripts\MenuPrincipal.cs" />
+    <Compile Include="Assets\Scripts\MinotauroControlador.cs" />
+    <Compile Include="Assets\Scripts\ModoInfinito.cs" />
+    <Compile Include="Assets\Scripts\MonedaControlador.cs" />
     <Compile Include="Assets\Scripts\MostrarTexto.cs" />
     <Compile Include="Assets\Scripts\OpcionesDatos.cs" />
+    <Compile Include="Assets\Scripts\OpcionesMenu.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\PortalControlador.cs" />
     <Compile Include="Assets\Scripts\PuertaSiguienteNivel.cs" />
+    <Compile Include="Assets\Scripts\PuertaTraslador.cs" />
     <Compile Include="Assets\Scripts\SecretArea.cs" />
     <Compile Include="Assets\Scripts\TextoCartel.cs" />
     <Compile Include="Assets\Scripts\enemigo.cs" />

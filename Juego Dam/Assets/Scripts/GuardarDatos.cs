@@ -49,13 +49,19 @@ public class GuardarDatos {
 
     public static void GuardarOpciones(OpcionesMenu opcionesMenu)
     {
-
+        //creamos el encargado de transformar los datos en binario
         BinaryFormatter formateador = new BinaryFormatter();
+        //lugar donde se va a guardar los datos, usamos aplication.persistance
+        //para que funcione en cualquier sistema y no solo en pc o movil
         string localizacion = Application.persistentDataPath + "/configuracion.dam";
+        //hace falta pasar la localizacion y el modo, en este caso Create porque
+        //vamos a guardar/crear el archivo
         FileStream stream = new FileStream(localizacion, FileMode.Create);
+        //datos de opciones
         OpcionesDatos datos = new OpcionesDatos(opcionesMenu);
+        //guardamos los datos
         formateador.Serialize(stream, datos);
-
+        //cerrar
         stream.Close();
     }
 
@@ -66,10 +72,13 @@ public class GuardarDatos {
         if (File.Exists(localizacion))
         {
             BinaryFormatter formateador = new BinaryFormatter();
+            //hace falta pasar la localizacion y el modo, en este caso Open para abrir el archivo
             FileStream stream = new FileStream(localizacion, FileMode.Open);
+            //los datos de opciones
             OpcionesDatos datos = formateador.Deserialize(stream) as OpcionesDatos;
+            //cerrar 
             stream.Close();
-
+            //se devuelve los datos 
             return datos;
         }
         else
